@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFitnessProject.BL", "MyFitnessProject.BL\MyFitnessProject.BL.csproj", "{B4A02CF3-99B6-401F-8A1B-7AC90CD9DA2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFitnessProject.BL", "MyFitnessProject.BL\MyFitnessProject.BL.csproj", "{B4A02CF3-99B6-401F-8A1B-7AC90CD9DA2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFitnessProject.CMD", "MyFitnessProject.CMD\MyFitnessProject.CMD.csproj", "{0442E7F7-3804-4669-A398-726F38624C46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFitnessProject.CMD", "MyFitnessProject.CMD\MyFitnessProject.CMD.csproj", "{11E66B87-E6F1-4D1B-B357-51456C6DCBAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{B4A02CF3-99B6-401F-8A1B-7AC90CD9DA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4A02CF3-99B6-401F-8A1B-7AC90CD9DA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4A02CF3-99B6-401F-8A1B-7AC90CD9DA2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0442E7F7-3804-4669-A398-726F38624C46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0442E7F7-3804-4669-A398-726F38624C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0442E7F7-3804-4669-A398-726F38624C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0442E7F7-3804-4669-A398-726F38624C46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E66B87-E6F1-4D1B-B357-51456C6DCBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E66B87-E6F1-4D1B-B357-51456C6DCBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E66B87-E6F1-4D1B-B357-51456C6DCBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E66B87-E6F1-4D1B-B357-51456C6DCBAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

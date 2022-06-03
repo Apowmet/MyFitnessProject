@@ -1,32 +1,39 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace MyFitnessProject.BL.Model
 {
     /// <summary>
     /// Пользователь.
     /// </summary>
+    [DataContract]
     public class User
     {
         #region Свойства
         /// <summary>
         /// Имя.
         /// </summary>
+        [DataMember]
         public string Name { get; }
         /// <summary>
         /// Пол.
         /// </summary>
+        [DataMember]
         public Gender Gender { get; }
         /// <summary>
         /// Дата рождения.
         /// </summary>
+        [DataMember]
         public DateTime BirthDate { get; }
         /// <summary>
         /// Вес.
         /// </summary>
+        [DataMember]
         public double Weight { get; set; }
         /// <summary>
         /// Рост.
         /// </summary>
+        [DataMember]
         public double Height { get; set; }
         #endregion
         /// <summary>
@@ -74,5 +81,6 @@ namespace MyFitnessProject.BL.Model
         {
             return Name;
         }
+        
     }
 }
