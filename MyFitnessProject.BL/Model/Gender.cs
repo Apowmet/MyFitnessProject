@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace MyFitnessProject.BL.Model
 {
     /// <summary>
     /// Пол.
     /// </summary>
-    [DataContract]
+    [Serializable]
     public class Gender
     {
-        [DataMember]
         /// <summary>
         /// Название.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Создать новый пол.
         /// </summary>

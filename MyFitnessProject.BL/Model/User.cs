@@ -1,40 +1,41 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace MyFitnessProject.BL.Model
 {
     /// <summary>
     /// Пользователь.
     /// </summary>
-    [DataContract]
+    [Serializable]
     public class User
     {
         #region Свойства
         /// <summary>
         /// Имя.
         /// </summary>
-        [DataMember]
         public string Name { get; }
         /// <summary>
         /// Пол.
         /// </summary>
-        [DataMember]
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        [DataMember]
         public DateTime BirthDate { get; }
         /// <summary>
         /// Вес.
         /// </summary>
-        [DataMember]
         public double Weight { get; set; }
         /// <summary>
         /// Рост.
         /// </summary>
-        [DataMember]
         public double Height { get; set; }
+        public int Age
+        {
+            get
+            {
+                return DateTime.Now.Year - BirthDate.Year;
+            }
+        }
         #endregion
         /// <summary>
         /// Создать нового пользователя.
@@ -77,9 +78,18 @@ namespace MyFitnessProject.BL.Model
             Weight = weight;
             Height = height;
         }
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException
+                ("Имя пользователя не может быть пустым или null.", nameof(name));
+            }
+            Name = name;
+        }
         public override string ToString()
         {
-            return Name;
+            return Name + "" + Age;
         }
         
     }

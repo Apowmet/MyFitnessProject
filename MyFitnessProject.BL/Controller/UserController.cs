@@ -1,7 +1,9 @@
 ﻿using MyFitnessProject.BL.Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace MyFitnessProject.BL.Controller
 {
@@ -13,43 +15,59 @@ namespace MyFitnessProject.BL.Controller
         /// <summary>
         /// Пользователь приложения.
         /// </summary>
-        public User User { get; }
+        public List<User> Users { get; }
+
+        public User CurrentUser { get; }
         /// <summary>
         /// Создание нового контроллера пользователя.
         /// </summary>
         /// <param name="user"></param>
-        public UserController(string userName, string genderName, DateTime birthDay, double weight, double height)
+        public UserController(string userName)
         {
-            //TODO: Проверка
-            var gender = new Gender(genderName);
-            User = new User(userName, gender, birthDay, weight, height);
+            if(string.IsNullOrWhiteSpace(userName))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым", nameof(userName));
+            }
+            Users = GetUsersData();
+
+            CurrentUser = Users.SingleOrDefault(u => u.Name == userName);
+            if(CurrentUser == null)
+            {
+                CurrentUser = new User(userName);
+                Users.Add(CurrentUser);
+                Save();
+            }
         }
         /// <summary>
-        /// Получить данные пользователя.
+        /// Получить сохраненный список пользователей.
         /// </summary>
-        /// <returns> Пользователь приложения.</returns>
-        public UserController()
+        /// <returns></returns>
+        private List<User> GetUsersData()
         {
-            var jsonFormatter = new DataContractJsonSerializer(typeof(User));
-            using (var fileStream = new FileStream("users.json", FileMode.OpenOrCreate))
+            var xmlFormatter = new XmlSerializer(typeof(List<User>));
+            using (var fileStream = new FileStream("users.xml", FileMode.OpenOrCreate))
             {
-                if (jsonFormatter.ReadObject(fileStream) is User user)
-                {
-                    User = user;
-                }
-                //TODO: Что делать, если пользователя  не прочитали?
-            }
 
+                if (xmlFormatter.Deserialize(fileStream) is List<User> users)
+                {
+                    return users;
+                }
+                else
+                {
+                    return new List<User>();
+                }
+            }
         }
         /// <summary>
         /// Сохранить данные пользователя.
         /// </summary>
         public void Save()
         {
-            var jsonFormatter = new DataContractJsonSerializer(typeof(User));
-            using (var fileStream = new FileStream("users.json", FileMode.OpenOrCreate))
+
+            var xmlFormatter = new XmlSerializer(typeof(List<User>));
+            using (var fileStream = new FileStream("users.xml", FileMode.OpenOrCreate))
             {
-                jsonFormatter.WriteObject(fileStream, User);
+                xmlFormatter.Serialize(fileStream, Users);
             }
             
         }
